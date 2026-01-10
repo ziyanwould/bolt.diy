@@ -18,6 +18,7 @@ export interface IProviderSetting {
   enabled?: boolean;
   baseUrl?: string;
   OPENAI_LIKE_API_MODELS?: string;
+  apiKey?: string; // 用于 OpenAILike 等需要 API Key 的本地提供商
 }
 
 export type IProviderConfig = ProviderInfo & {

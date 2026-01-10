@@ -190,6 +190,28 @@ export default function LocalProvidersTab() {
     [updateProviderSettings, toast],
   );
 
+  const handleUpdateApiKey = useCallback(
+    (provider: IProviderConfig, apiKey: string) => {
+      updateProviderSettings(provider.name, {
+        ...provider.settings,
+        apiKey,
+      });
+      toast(`${provider.name} API key updated`);
+    },
+    [updateProviderSettings, toast],
+  );
+
+  const handleUpdateModels = useCallback(
+    (provider: IProviderConfig, models: string) => {
+      updateProviderSettings(provider.name, {
+        ...provider.settings,
+        OPENAI_LIKE_API_MODELS: models,
+      });
+      toast(`${provider.name} custom models updated`);
+    },
+    [updateProviderSettings, toast],
+  );
+
   const handleUpdateOllamaModel = async (modelName: string) => {
     try {
       setOllamaModels((prev) => prev.map((m) => (m.name === modelName ? { ...m, status: 'updating' } : m)));
@@ -353,6 +375,8 @@ export default function LocalProvidersTab() {
                 provider={provider}
                 onToggle={(enabled) => handleToggleProvider(provider, enabled)}
                 onUpdateBaseUrl={(url) => handleUpdateBaseUrl(provider, url)}
+                onUpdateApiKey={(apiKey) => handleUpdateApiKey(provider, apiKey)}
+                onUpdateModels={(models) => handleUpdateModels(provider, models)}
                 isEditing={editingProvider === provider.name}
                 onStartEditing={() => setEditingProvider(provider.name)}
                 onStopEditing={() => setEditingProvider(null)}
