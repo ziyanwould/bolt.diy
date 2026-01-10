@@ -283,5 +283,72 @@
     "discussPlaceholder": "您想讨论什么？",
     "send": "发送消息",
     "stop": "停止生成"
+  },
+  "import": {
+    "importChat": "导入对话",
+    "importFolder": "导入文件夹",
+    "importing": "导入中...",
+    "chatImported": "对话导入成功",
+    "invalidFormat": "无效的对话文件格式",
+    "parseFailed": "解析对话文件失败",
+    "readFailed": "读取对话文件失败",
+    "importFailed": "导入对话失败",
+    "somethingWrong": "出了点问题"
+  },
+  "examplePrompts": {
+    "mobileApp": "创建一个关于 bolt.diy 的移动应用",
+    "todoApp": "使用 React 和 Tailwind 构建待办事项应用",
+    "blog": "使用 Astro 构建简单博客",
+    "cookieConsent": "使用 Material UI 创建 Cookie 同意表单",
+    "spaceGame": "制作太空入侵者游戏",
+    "ticTacToe": "仅使用 HTML、CSS 和 JS 制作井字棋游戏"
+  },
+  "gitClone": {
+    "cloneRepo": "克隆仓库",
+    "cloneGitRepo": "克隆 Git 仓库",
+    "enterUrl": "输入 Git 仓库 URL",
+    "urlPlaceholder": "https://github.com/user/repo",
+    "cancel": "取消",
+    "clone": "克隆"
+  },
+  "workbenchToolbar": {
+    "urlPath": "URL 路径",
+    "switchToDevice": "切换到设备模式",
+    "switchToResponsive": "切换到响应模式",
+    "showQR": "显示二维码",
+    "switchToPortrait": "切换到竖屏",
+    "switchToLandscape": "切换到横屏",
+    "hideDeviceFrame": "隐藏设备边框",
+    "showDeviceFrame": "显示设备边框",
+    "disableInspector": "禁用元素检查器",
+    "enableInspector": "启用元素检查器",
+    "exitFullScreen": "退出全屏",
+    "fullScreen": "全屏",
+    "newWindowOptions": "新窗口选项",
+    "dragToResize": "拖动调整宽度"
+  },
+  "terminal": {
+    "resetTerminal": "重置终端",
+    "close": "关闭"
+  },
+  "fileTree": {
+    "folderLocked": "文件夹已锁定",
+    "fileLocked": "文件已锁定",
+    "unlockAll": "解锁所有选中项",
+    "unlock": "解锁",
+    "noItemsSelected": "未选择要解锁的项目"
+  },
+  "toast": {
+    "success": "成功",
+    "error": "错误",
+    "promptEnhanced": "提示词已增强！",
+    "settingsUpdated": "设置已更新",
+    "settingsFailed": "更新设置失败",
+    "profileUpdated": "头像已更新",
+    "profileFailed": "更新头像失败",
+    "urlCopied": "URL 已复制到剪贴板",
+    "screenshotCaptured": "截图已捕获并添加到对话",
+    "screenshotFailed": "截图捕获失败"
   }
 }
+

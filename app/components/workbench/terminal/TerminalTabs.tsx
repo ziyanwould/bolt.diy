@@ -9,6 +9,7 @@ import { classNames } from '~/utils/classNames';
 import { Terminal, type TerminalRef } from './Terminal';
 import { TerminalManager } from './TerminalManager';
 import { createScopedLogger } from '~/utils/logger';
+import { useTranslation } from 'react-i18next';
 
 const logger = createScopedLogger('Terminal');
 
@@ -16,6 +17,7 @@ const MAX_TERMINALS = 3;
 export const DEFAULT_TERMINAL_SIZE = 25;
 
 export const TerminalTabs = memo(() => {
+  const { t } = useTranslation();
   const showTerminal = useStore(workbenchStore.showTerminal);
   const theme = useStore(themeStore);
 
@@ -189,7 +191,7 @@ export const TerminalTabs = memo(() => {
             {terminalCount < MAX_TERMINALS && <IconButton icon="i-ph:plus" size="md" onClick={addTerminal} />}
             <IconButton
               icon="i-ph:arrow-clockwise"
-              title="Reset Terminal"
+              title={t('terminal.resetTerminal')}
               size="md"
               onClick={() => {
                 const ref = terminalRefs.current.get(activeTerminal);
@@ -210,7 +212,7 @@ export const TerminalTabs = memo(() => {
             <IconButton
               className="ml-auto"
               icon="i-ph:caret-down"
-              title="Close"
+              title={t('terminal.close')}
               size="md"
               onClick={() => workbenchStore.toggleTerminal(false)}
             />

@@ -283,5 +283,72 @@
     "discussPlaceholder": "What would you like to discuss?",
     "send": "Send message",
     "stop": "Stop generating"
+  },
+  "import": {
+    "importChat": "Import Chat",
+    "importFolder": "Import Folder",
+    "importing": "Importing...",
+    "chatImported": "Chat imported successfully",
+    "invalidFormat": "Invalid chat file format",
+    "parseFailed": "Failed to parse chat file",
+    "readFailed": "Failed to read chat file",
+    "importFailed": "Failed to import chat",
+    "somethingWrong": "Something went wrong"
+  },
+  "examplePrompts": {
+    "mobileApp": "Create a mobile app about bolt.diy",
+    "todoApp": "Build a todo app in React using Tailwind",
+    "blog": "Build a simple blog using Astro",
+    "cookieConsent": "Create a cookie consent form using Material UI",
+    "spaceGame": "Make a space invaders game",
+    "ticTacToe": "Make a Tic Tac Toe game in html, css and js only"
+  },
+  "gitClone": {
+    "cloneRepo": "Clone a repo",
+    "cloneGitRepo": "Clone a Git Repository",
+    "enterUrl": "Enter Git Repository URL",
+    "urlPlaceholder": "https://github.com/user/repo",
+    "cancel": "Cancel",
+    "clone": "Clone"
+  },
+  "workbenchToolbar": {
+    "urlPath": "URL Path",
+    "switchToDevice": "Switch to Device Mode",
+    "switchToResponsive": "Switch to Responsive Mode",
+    "showQR": "Show QR",
+    "switchToPortrait": "Switch to Portrait",
+    "switchToLandscape": "Switch to Landscape",
+    "hideDeviceFrame": "Hide Device Frame",
+    "showDeviceFrame": "Show Device Frame",
+    "disableInspector": "Disable Element Inspector",
+    "enableInspector": "Enable Element Inspector",
+    "exitFullScreen": "Exit Full Screen",
+    "fullScreen": "Full Screen",
+    "newWindowOptions": "New Window Options",
+    "dragToResize": "Drag to resize width"
+  },
+  "terminal": {
+    "resetTerminal": "Reset Terminal",
+    "close": "Close"
+  },
+  "fileTree": {
+    "folderLocked": "Folder is locked",
+    "fileLocked": "File is locked",
+    "unlockAll": "Unlock all selected items",
+    "unlock": "Unlock",
+    "noItemsSelected": "No items selected to unlock."
+  },
+  "toast": {
+    "success": "Success",
+    "error": "Error",
+    "promptEnhanced": "Prompt enhanced!",
+    "settingsUpdated": "Settings updated",
+    "settingsFailed": "Failed to update settings",
+    "profileUpdated": "Profile picture updated",
+    "profileFailed": "Failed to update profile picture",
+    "urlCopied": "URL copied to clipboard",
+    "screenshotCaptured": "Screenshot captured and added to chat",
+    "screenshotFailed": "Failed to capture screenshot"
   }
 }
+
