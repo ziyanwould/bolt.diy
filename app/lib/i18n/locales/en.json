@@ -206,7 +206,8 @@
     "importChat": "Import Chat",
     "importFolder": "Import Folder",
     "cloneRepo": "Clone a repo",
-    "goToLastMessage": "Go to last message"
+    "goToLastMessage": "Go to last message",
+    "startBlankApp": "or start a blank app with your favorite stack"
   },
   "sidebar": {
     "newChat": "New Chat",
@@ -309,7 +310,14 @@
     "enterUrl": "Enter Git Repository URL",
     "urlPlaceholder": "https://github.com/user/repo",
     "cancel": "Cancel",
-    "clone": "Clone"
+    "clone": "Clone",
+    "chooseProvider": "Choose Repository Provider",
+    "cloneFromGitHub": "Clone from GitHub repositories",
+    "cloneFromGitLab": "Clone from GitLab repositories",
+    "importGitHubRepo": "Import GitHub Repository",
+    "importGitLabRepo": "Import GitLab Repository",
+    "cloneGitHubToWorkspace": "Clone a repository from GitHub to your workspace",
+    "cloneGitLabToWorkspace": "Clone a repository from GitLab to your workspace"
   },
   "workbenchToolbar": {
     "urlPath": "URL Path",

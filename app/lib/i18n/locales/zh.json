@@ -206,7 +206,8 @@
     "importChat": "导入对话",
     "importFolder": "导入文件夹",
     "cloneRepo": "克隆仓库",
-    "goToLastMessage": "跳转到最后一条消息"
+    "goToLastMessage": "跳转到最后一条消息",
+    "startBlankApp": "或使用您喜爱的技术栈创建空白应用"
   },
   "sidebar": {
     "newChat": "新建对话",
@@ -309,7 +310,14 @@
     "enterUrl": "输入 Git 仓库 URL",
     "urlPlaceholder": "https://github.com/user/repo",
     "cancel": "取消",
-    "clone": "克隆"
+    "clone": "克隆",
+    "chooseProvider": "选择仓库提供商",
+    "cloneFromGitHub": "从 GitHub 仓库克隆",
+    "cloneFromGitLab": "从 GitLab 仓库克隆",
+    "importGitHubRepo": "导入 GitHub 仓库",
+    "importGitLabRepo": "导入 GitLab 仓库",
+    "cloneGitHubToWorkspace": "将 GitHub 仓库克隆到您的工作区",
+    "cloneGitLabToWorkspace": "将 GitLab 仓库克隆到您的工作区"
   },
   "workbenchToolbar": {
     "urlPath": "URL 路径",
