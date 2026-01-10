@@ -4,12 +4,14 @@ import { useStore } from '@nanostores/react';
 import { classNames } from '~/utils/classNames';
 import { profileStore } from '~/lib/stores/profile';
 import type { TabType, Profile } from './types';
+import { useTranslation } from 'react-i18next';
 
 interface AvatarDropdownProps {
   onSelectTab: (tab: TabType) => void;
 }
 
 export const AvatarDropdown = ({ onSelectTab }: AvatarDropdownProps) => {
+  const { t } = useTranslation();
   const profile = useStore(profileStore) as Profile;
 
   return (
@@ -72,7 +74,7 @@ export const AvatarDropdown = ({ onSelectTab }: AvatarDropdownProps) => {
             </div>
             <div className="flex-1 min-w-0">
               <div className="font-medium text-sm text-gray-900 dark:text-white truncate">
-                {profile?.username || 'Guest User'}
+                {profile?.username || t('avatarMenu.guestUser')}
               </div>
               {profile?.bio && <div className="text-xs text-gray-500 dark:text-gray-400 truncate">{profile.bio}</div>}
             </div>
@@ -91,7 +93,7 @@ export const AvatarDropdown = ({ onSelectTab }: AvatarDropdownProps) => {
             onClick={() => onSelectTab('profile')}
           >
             <div className="i-ph:user-circle w-4 h-4 text-gray-400 group-hover:text-purple-500 dark:group-hover:text-purple-400 transition-colors" />
-            Edit Profile
+            {t('avatarMenu.editProfile')}
           </DropdownMenu.Item>
 
           <DropdownMenu.Item
@@ -107,7 +109,7 @@ export const AvatarDropdown = ({ onSelectTab }: AvatarDropdownProps) => {
             onClick={() => onSelectTab('settings')}
           >
             <div className="i-ph:gear-six w-4 h-4 text-gray-400 group-hover:text-purple-500 dark:group-hover:text-purple-400 transition-colors" />
-            Settings
+            {t('avatarMenu.settings')}
           </DropdownMenu.Item>
 
           <div className="my-1 border-t border-gray-200/50 dark:border-gray-800/50" />
@@ -127,7 +129,7 @@ export const AvatarDropdown = ({ onSelectTab }: AvatarDropdownProps) => {
             }
           >
             <div className="i-ph:bug w-4 h-4 text-gray-400 group-hover:text-purple-500 dark:group-hover:text-purple-400 transition-colors" />
-            Report Bug
+            {t('avatarMenu.reportBug')}
           </DropdownMenu.Item>
 
           <DropdownMenu.Item
@@ -150,7 +152,7 @@ export const AvatarDropdown = ({ onSelectTab }: AvatarDropdownProps) => {
             }}
           >
             <div className="i-ph:download w-4 h-4 text-gray-400 group-hover:text-purple-500 dark:group-hover:text-purple-400 transition-colors" />
-            Download Debug Log
+            {t('avatarMenu.downloadDebugLog')}
           </DropdownMenu.Item>
 
           <DropdownMenu.Item
@@ -166,7 +168,7 @@ export const AvatarDropdown = ({ onSelectTab }: AvatarDropdownProps) => {
             onClick={() => window.open('https://stackblitz-labs.github.io/bolt.diy/', '_blank')}
           >
             <div className="i-ph:question w-4 h-4 text-gray-400 group-hover:text-purple-500 dark:group-hover:text-purple-400 transition-colors" />
-            Help & Documentation
+            {t('avatarMenu.helpDocs')}
           </DropdownMenu.Item>
         </DropdownMenu.Content>
       </DropdownMenu.Portal>

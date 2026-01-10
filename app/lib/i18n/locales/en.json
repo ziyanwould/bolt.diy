@@ -240,5 +240,48 @@
     "download": "Download",
     "deploy": "Deploy",
     "push": "Push to GitHub"
+  },
+  "avatarMenu": {
+    "guestUser": "Guest User",
+    "editProfile": "Edit Profile",
+    "settings": "Settings",
+    "reportBug": "Report Bug",
+    "downloadDebugLog": "Download Debug Log",
+    "helpDocs": "Help & Documentation"
+  },
+  "profile": {
+    "title": "Profile",
+    "profilePicture": "Profile Picture",
+    "uploadAvatar": "Upload a profile picture or avatar",
+    "username": "Username",
+    "enterUsername": "Enter your username",
+    "bio": "Bio",
+    "tellAboutYourself": "Tell us about yourself"
+  },
+  "settingsTab": {
+    "preferences": "Preferences",
+    "language": "Language",
+    "notifications": "Notifications",
+    "notificationsEnabled": "Notifications are enabled",
+    "notificationsDisabled": "Notifications are disabled",
+    "timeSettings": "Time Settings",
+    "timezone": "Timezone",
+    "keyboardShortcuts": "Keyboard Shortcuts",
+    "toggleTheme": "Toggle Theme",
+    "toggleThemeDesc": "Switch between light and dark mode"
+  },
+  "providers": {
+    "cloudProviders": "Cloud Providers",
+    "cloudProvidersDesc": "Connect to cloud-based AI models and services",
+    "enableAllCloud": "Enable All Cloud",
+    "standardIntegration": "Standard AI provider integration",
+    "localProviders": "Local Providers",
+    "localProvidersDesc": "Connect to locally running AI models"
+  },
+  "chatInput": {
+    "placeholder": "How can Bolt help you today?",
+    "discussPlaceholder": "What would you like to discuss?",
+    "send": "Send message",
+    "stop": "Stop generating"
   }
 }

@@ -240,5 +240,48 @@
     "download": "下载",
     "deploy": "部署",
     "push": "推送到 GitHub"
+  },
+  "avatarMenu": {
+    "guestUser": "访客用户",
+    "editProfile": "编辑资料",
+    "settings": "设置",
+    "reportBug": "报告 Bug",
+    "downloadDebugLog": "下载调试日志",
+    "helpDocs": "帮助与文档"
+  },
+  "profile": {
+    "title": "个人资料",
+    "profilePicture": "头像",
+    "uploadAvatar": "上传头像或个人图片",
+    "username": "用户名",
+    "enterUsername": "输入您的用户名",
+    "bio": "个人简介",
+    "tellAboutYourself": "介绍一下您自己"
+  },
+  "settingsTab": {
+    "preferences": "偏好设置",
+    "language": "语言",
+    "notifications": "通知",
+    "notificationsEnabled": "通知已启用",
+    "notificationsDisabled": "通知已禁用",
+    "timeSettings": "时间设置",
+    "timezone": "时区",
+    "keyboardShortcuts": "键盘快捷键",
+    "toggleTheme": "切换主题",
+    "toggleThemeDesc": "在浅色和深色模式之间切换"
+  },
+  "providers": {
+    "cloudProviders": "云端提供商",
+    "cloudProvidersDesc": "连接到基于云的 AI 模型和服务",
+    "enableAllCloud": "启用全部云端",
+    "standardIntegration": "标准 AI 提供商集成",
+    "localProviders": "本地提供商",
+    "localProvidersDesc": "连接到本地运行的 AI 模型"
+  },
+  "chatInput": {
+    "placeholder": "Bolt 今天能帮您什么？",
+    "discussPlaceholder": "您想讨论什么？",
+    "send": "发送消息",
+    "stop": "停止生成"
   }
 }

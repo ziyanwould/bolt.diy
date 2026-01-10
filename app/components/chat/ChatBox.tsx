@@ -19,6 +19,7 @@ import { ColorSchemeDialog } from '~/components/ui/ColorSchemeDialog';
 import type { DesignScheme } from '~/types/design-scheme';
 import type { ElementInfo } from '~/components/workbench/Inspector';
 import { McpTools } from './MCPTools';
+import { useTranslation } from 'react-i18next';
 
 interface ChatBoxProps {
   isModelSettingsCollapsed: boolean;
@@ -64,6 +65,8 @@ interface ChatBoxProps {
 }
 
 export const ChatBox: React.FC<ChatBoxProps> = (props) => {
+  const { t } = useTranslation();
+
   return (
     <div
       className={classNames(
@@ -236,7 +239,7 @@ export const ChatBox: React.FC<ChatBoxProps> = (props) => {
             minHeight: props.TEXTAREA_MIN_HEIGHT,
             maxHeight: props.TEXTAREA_MAX_HEIGHT,
           }}
-          placeholder={props.chatMode === 'build' ? 'How can Bolt help you today?' : 'What would you like to discuss?'}
+          placeholder={props.chatMode === 'build' ? t('chatInput.placeholder') : t('chatInput.discussPlaceholder')}
           translate="no"
         />
         <ClientOnly>

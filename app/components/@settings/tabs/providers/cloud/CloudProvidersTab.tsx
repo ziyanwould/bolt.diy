@@ -14,6 +14,7 @@ import { TbBrain, TbCloudComputing } from 'react-icons/tb';
 import { BiCodeBlock, BiChip } from 'react-icons/bi';
 import { FaCloud, FaBrain } from 'react-icons/fa';
 import type { IconType } from 'react-icons';
+import { useTranslation } from 'react-i18next';
 
 // Add type for provider names to ensure type safety
 type ProviderName =
@@ -60,6 +61,7 @@ const PROVIDER_DESCRIPTIONS: Partial<Record<ProviderName, string>> = {
 };
 
 const CloudProvidersTab = () => {
+  const { t } = useTranslation();
   const settings = useSettings();
   const [editingProvider, setEditingProvider] = useState<string | null>(null);
   const [filteredProviders, setFilteredProviders] = useState<IProviderConfig[]>([]);
@@ -153,13 +155,13 @@ const CloudProvidersTab = () => {
               <TbCloudComputing className="w-5 h-5" />
             </div>
             <div>
-              <h4 className="text-md font-medium text-bolt-elements-textPrimary">Cloud Providers</h4>
-              <p className="text-sm text-bolt-elements-textSecondary">Connect to cloud-based AI models and services</p>
+              <h4 className="text-md font-medium text-bolt-elements-textPrimary">{t('providers.cloudProviders')}</h4>
+              <p className="text-sm text-bolt-elements-textSecondary">{t('providers.cloudProvidersDesc')}</p>
             </div>
           </div>
 
           <div className="flex items-center gap-2">
-            <span className="text-sm text-bolt-elements-textSecondary">Enable All Cloud</span>
+            <span className="text-sm text-bolt-elements-textSecondary">{t('providers.enableAllCloud')}</span>
             <Switch checked={categoryEnabled} onCheckedChange={handleToggleCategory} />
           </div>
         </div>
@@ -222,7 +224,7 @@ const CloudProvidersTab = () => {
                         {PROVIDER_DESCRIPTIONS[provider.name as keyof typeof PROVIDER_DESCRIPTIONS] ||
                           (URL_CONFIGURABLE_PROVIDERS.includes(provider.name)
                             ? 'Configure custom endpoint for this provider'
-                            : 'Standard AI provider integration')}
+                            : t('providers.standardIntegration'))}
                       </p>
                     </div>
                     <Switch
