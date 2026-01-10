@@ -204,10 +204,23 @@
   },
   "sidebar": {
     "newChat": "New Chat",
+    "startNewChat": "Start new chat",
     "history": "History",
     "noHistory": "No chat history",
+    "yourChats": "Your Chats",
+    "searchPlaceholder": "Search chats...",
+    "selectAll": "Select all",
+    "deselectAll": "Deselect all",
+    "deleteSelected": "Delete selected",
+    "noPreviousConversations": "No previous conversations",
+    "noMatchesFound": "No matches found",
     "deleteChat": "Delete Chat",
-    "renameChat": "Rename Chat"
+    "deleteChatConfirm": "Are you sure you want to delete this chat?",
+    "deleteChatsConfirm": "Are you sure you want to delete these chats?",
+    "renameChat": "Rename Chat",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "guestUser": "Guest User"
   },
   "header": {
     "settings": "Settings",

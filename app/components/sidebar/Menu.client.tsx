@@ -14,6 +14,7 @@ import { useSearchFilter } from '~/lib/hooks/useSearchFilter';
 import { classNames } from '~/utils/classNames';
 import { useStore } from '@nanostores/react';
 import { profileStore } from '~/lib/stores/profile';
+import { useTranslation } from 'react-i18next';
 
 const menuVariants = {
   closed: {
@@ -64,6 +65,7 @@ function CurrentDateTime() {
 }
 
 export const Menu = () => {
+  const { t } = useTranslation();
   const { duplicateCurrentChat, exportChat } = useChatHistory();
   const menuRef = useRef<HTMLDivElement>(null);
   const [list, setList] = useState<ChatHistoryItem[]>([]);
@@ -368,7 +370,7 @@ export const Menu = () => {
                 className="flex-1 flex gap-2 items-center bg-purple-50 dark:bg-purple-500/10 text-purple-700 dark:text-purple-300 hover:bg-purple-100 dark:hover:bg-purple-500/20 rounded-lg px-4 py-2 transition-colors"
               >
                 <span className="inline-block i-ph:plus-circle h-4 w-4" />
-                <span className="text-sm font-medium">Start new chat</span>
+                <span className="text-sm font-medium">{t('sidebar.startNewChat')}</span>
               </a>
               <button
                 onClick={toggleSelectionMode}
@@ -390,18 +392,18 @@ export const Menu = () => {
               <input
                 className="w-full bg-gray-50 dark:bg-gray-900 relative pl-9 pr-3 py-2 rounded-lg focus:outline-none focus:ring-1 focus:ring-purple-500/50 text-sm text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-500 border border-gray-200 dark:border-gray-800"
                 type="search"
-                placeholder="Search chats..."
+                placeholder={t('sidebar.searchPlaceholder')}
                 onChange={handleSearchChange}
                 aria-label="Search chats"
               />
             </div>
           </div>
           <div className="flex items-center justify-between text-sm px-4 py-2">
-            <div className="font-medium text-gray-600 dark:text-gray-400">Your Chats</div>
+            <div className="font-medium text-gray-600 dark:text-gray-400">{t('sidebar.yourChats')}</div>
             {selectionMode && (
               <div className="flex items-center gap-2">
                 <Button variant="ghost" size="sm" onClick={selectAll}>
-                  {selectedItems.length === filteredList.length ? 'Deselect all' : 'Select all'}
+                  {selectedItems.length === filteredList.length ? t('sidebar.deselectAll') : t('sidebar.selectAll')}
                 </Button>
                 <Button
                   variant="destructive"
@@ -409,7 +411,7 @@ export const Menu = () => {
                   onClick={handleBulkDeleteClick}
                   disabled={selectedItems.length === 0}
                 >
-                  Delete selected
+                  {t('sidebar.deleteSelected')}
                 </Button>
               </div>
             )}
@@ -417,7 +419,7 @@ export const Menu = () => {
           <div className="flex-1 overflow-auto px-3 pb-3">
             {filteredList.length === 0 && (
               <div className="px-4 text-gray-500 dark:text-gray-400 text-sm">
-                {list.length === 0 ? 'No previous conversations' : 'No matches found'}
+                {list.length === 0 ? t('sidebar.noPreviousConversations') : t('sidebar.noMatchesFound')}
               </div>
             )}
             <DialogRoot open={dialogContent !== null}>
