@@ -13,6 +13,7 @@ import { TAB_LABELS, DEFAULT_TAB_CONFIG, TAB_DESCRIPTIONS } from './constants';
 import { DialogTitle } from '~/components/ui/Dialog';
 import { AvatarDropdown } from './AvatarDropdown';
 import BackgroundRays from '~/components/ui/BackgroundRays';
+import { useTranslation } from 'react-i18next';
 
 // Import all tab components
 import ProfileTab from '~/components/@settings/tabs/profile/ProfileTab';
@@ -46,6 +47,51 @@ const BetaLabel = () => (
 );
 
 export const ControlPanel = ({ open, onClose }: ControlPanelProps) => {
+  const { t } = useTranslation();
+
+  // Tab ID to i18n key mapping
+  const tabKeyMap: Record<string, string> = {
+    profile: 'profile',
+    settings: 'settings',
+    notifications: 'notifications',
+    features: 'features',
+    data: 'data',
+    'cloud-providers': 'cloudProviders',
+    'local-providers': 'localProviders',
+    github: 'github',
+    gitlab: 'gitlab',
+    netlify: 'netlify',
+    vercel: 'vercel',
+    supabase: 'supabase',
+    'event-logs': 'eventLogs',
+    mcp: 'mcp',
+    language: 'language',
+  };
+
+  // Get translated tab label
+  const getTabLabel = (tabId: string): string => {
+    const key = tabKeyMap[tabId];
+    if (key) {
+      const translated = t(`settings.tabs.${key}`);
+      if (translated !== `settings.tabs.${key}`) {
+        return translated;
+      }
+    }
+    return TAB_LABELS[tabId as TabType] || tabId;
+  };
+
+  // Get translated tab description
+  const getTabDescription = (tabId: string): string => {
+    const key = tabKeyMap[tabId];
+    if (key) {
+      const translated = t(`settings.tabDescriptions.${key}`);
+      if (translated !== `settings.tabDescriptions.${key}`) {
+        return translated;
+      }
+    }
+    return TAB_DESCRIPTIONS[tabId as TabType] || '';
+  };
+
   // State
   const [activeTab, setActiveTab] = useState<TabType | null>(null);
   const [loadingTab, setLoadingTab] = useState<TabType | null>(null);
@@ -264,7 +310,7 @@ export const ControlPanel = ({ open, onClose }: ControlPanelProps) => {
                       </button>
                     )}
                     <DialogTitle className="text-xl font-semibold text-gray-900 dark:text-white">
-                      {showTabManagement ? 'Tab Management' : activeTab ? TAB_LABELS[activeTab] : 'Control Panel'}
+                      {showTabManagement ? t('settings.tabManagement') || 'Tab Management' : activeTab ? getTabLabel(activeTab) : t('settings.controlPanel')}
                     </DialogTitle>
                   </div>
 
@@ -322,11 +368,12 @@ export const ControlPanel = ({ open, onClose }: ControlPanelProps) => {
                           >
                             <TabTile
                               tab={tab}
+                              label={getTabLabel(tab.id)}
                               onClick={() => handleTabClick(tab.id as TabType)}
                               isActive={activeTab === tab.id}
                               hasUpdate={getTabUpdateStatus(tab.id)}
                               statusMessage={getStatusMessage(tab.id)}
-                              description={TAB_DESCRIPTIONS[tab.id]}
+                              description={getTabDescription(tab.id)}
                               isLoading={loadingTab === tab.id}
                               className="h-full relative"
                             >

@@ -11,6 +11,7 @@ interface TabTileProps {
   hasUpdate?: boolean;
   statusMessage?: string;
   description?: string;
+  label?: string;
   isLoading?: boolean;
   className?: string;
   children?: React.ReactNode;
@@ -23,6 +24,7 @@ export const TabTile: React.FC<TabTileProps> = ({
   hasUpdate,
   statusMessage,
   description,
+  label,
   isLoading,
   className,
   children,
@@ -97,7 +99,7 @@ export const TabTile: React.FC<TabTileProps> = ({
                       isActive ? 'text-purple-500 dark:text-purple-400/90' : '',
                     )}
                   >
-                    {TAB_LABELS[tab.id]}
+                    {label || TAB_LABELS[tab.id]}
                   </h3>
                   {description && (
                     <p
