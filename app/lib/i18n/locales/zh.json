@@ -192,6 +192,8 @@
   },
   "chat": {
     "newChat": "新建对话",
+    "heroTitle": "创意从这里开始",
+    "heroSubtitle": "在几秒钟内实现您的想法，或获取现有项目的帮助。",
     "placeholder": "输入您的消息...",
     "send": "发送",
     "stop": "停止",
@@ -200,7 +202,11 @@
     "copied": "已复制！",
     "thinking": "思考中...",
     "noMessages": "暂无消息",
-    "startConversation": "开始对话"
+    "startConversation": "开始对话",
+    "importChat": "导入对话",
+    "importFolder": "导入文件夹",
+    "cloneRepo": "克隆仓库",
+    "goToLastMessage": "跳转到最后一条消息"
   },
   "sidebar": {
     "newChat": "新建对话",

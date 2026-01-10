@@ -192,6 +192,8 @@
   },
   "chat": {
     "newChat": "New Chat",
+    "heroTitle": "Where ideas begin",
+    "heroSubtitle": "Bring ideas to life in seconds or get help on existing projects.",
     "placeholder": "Type your message...",
     "send": "Send",
     "stop": "Stop",
@@ -200,7 +202,11 @@
     "copied": "Copied!",
     "thinking": "Thinking...",
     "noMessages": "No messages yet",
-    "startConversation": "Start a conversation"
+    "startConversation": "Start a conversation",
+    "importChat": "Import Chat",
+    "importFolder": "Import Folder",
+    "cloneRepo": "Clone a repo",
+    "goToLastMessage": "Go to last message"
   },
   "sidebar": {
     "newChat": "New Chat",
