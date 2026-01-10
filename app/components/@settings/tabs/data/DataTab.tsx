@@ -9,6 +9,7 @@ import { getAllChats, type Chat } from '~/lib/persistence/chats';
 import { DataVisualization } from './DataVisualization';
 import { classNames } from '~/utils/classNames';
 import { toast } from 'react-toastify';
+import { useTranslation } from 'react-i18next';
 
 // Create a custom hook to connect to the boltHistory database
 function useBoltHistoryDB() {
@@ -74,6 +75,7 @@ interface ChatItem {
 }
 
 export function DataTab() {
+  const { t } = useTranslation();
   // Use our custom hook for the boltHistory database
   const { db, isLoading: dbLoading } = useBoltHistoryDB();
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -229,10 +231,10 @@ export function DataTab() {
       <ConfirmationDialog
         isOpen={showResetInlineConfirm}
         onClose={() => setShowResetInlineConfirm(false)}
-        title="Reset All Settings?"
-        description="This will reset all your settings to their default values. This action cannot be undone."
-        confirmLabel="Reset Settings"
-        cancelLabel="Cancel"
+        title={t('settings.data.resetSettingsConfirm')}
+        description={t('settings.data.resetSettingsWarning')}
+        confirmLabel={t('settings.data.resetAllSettings')}
+        cancelLabel={t('settings.data.cancel')}
         variant="destructive"
         isLoading={isResetting}
         onConfirm={handleResetSettings}
@@ -242,10 +244,10 @@ export function DataTab() {
       <ConfirmationDialog
         isOpen={showDeleteInlineConfirm}
         onClose={() => setShowDeleteInlineConfirm(false)}
-        title="Delete All Chats?"
-        description="This will permanently delete all your chat history. This action cannot be undone."
-        confirmLabel="Delete All"
-        cancelLabel="Cancel"
+        title={t('settings.data.deleteChatsConfirm')}
+        description={t('settings.data.deleteChatsWarning')}
+        confirmLabel={t('settings.data.deleteAll')}
+        cancelLabel={t('settings.data.cancel')}
         variant="destructive"
         isLoading={isDeleting}
         onConfirm={handleResetChatsWithState}
@@ -255,35 +257,35 @@ export function DataTab() {
       <SelectionDialog
         isOpen={showSettingsSelection}
         onClose={() => setShowSettingsSelection(false)}
-        title="Select Settings to Export"
+        title={t('settings.data.selectSettingsToExport')}
         items={settingsCategories}
         onConfirm={(selectedIds) => {
           handleExportSelectedSettings(selectedIds);
           setShowSettingsSelection(false);
         }}
-        confirmLabel="Export Selected"
+        confirmLabel={t('settings.data.exportSelected')}
       />
 
       {/* Chats Selection Dialog */}
       <SelectionDialog
         isOpen={showChatsSelection}
         onClose={() => setShowChatsSelection(false)}
-        title="Select Chats to Export"
+        title={t('settings.data.selectChatsToExport')}
         items={chatItems}
         onConfirm={(selectedIds) => {
           handleExportSelectedChats(selectedIds);
           setShowChatsSelection(false);
         }}
-        confirmLabel="Export Selected"
+        confirmLabel={t('settings.data.exportSelected')}
       />
 
       {/* Chats Section */}
       <div>
-        <h2 className="text-xl font-semibold mb-4 text-bolt-elements-textPrimary">Chats</h2>
+        <h2 className="text-xl font-semibold mb-4 text-bolt-elements-textPrimary">{t('settings.data.chats')}</h2>
         {dbLoading ? (
           <div className="flex items-center justify-center p-4">
             <div className="i-ph-spinner-gap-bold animate-spin w-6 h-6 mr-2" />
-            <span>Loading chats database...</span>
+            <span>{t('settings.data.loadingChatsDb')}</span>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -294,10 +296,10 @@ export function DataTab() {
                     <div className="i-ph-download-duotone w-5 h-5" />
                   </motion.div>
                   <CardTitle className="text-lg group-hover:text-bolt-elements-item-contentAccent transition-colors">
-                    Export All Chats
+                    {t('settings.data.exportAllChats')}
                   </CardTitle>
                 </div>
-                <CardDescription>Export all your chats to a JSON file.</CardDescription>
+                <CardDescription>{t('settings.data.exportAllChatsDesc')}</CardDescription>
               </CardHeader>
               <CardFooter>
                 <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="w-full">
@@ -358,10 +360,10 @@ export function DataTab() {
                     <div className="i-ph:list-checks w-5 h-5" />
                   </motion.div>
                   <CardTitle className="text-lg group-hover:text-bolt-elements-item-contentAccent transition-colors">
-                    Export Selected Chats
+                    {t('settings.data.exportSelectedChats')}
                   </CardTitle>
                 </div>
-                <CardDescription>Choose specific chats to export.</CardDescription>
+                <CardDescription>{t('settings.data.exportSelectedChatsDesc')}</CardDescription>
               </CardHeader>
               <CardFooter>
                 <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="w-full">
@@ -395,10 +397,10 @@ export function DataTab() {
                     <div className="i-ph-upload-duotone w-5 h-5" />
                   </motion.div>
                   <CardTitle className="text-lg group-hover:text-bolt-elements-item-contentAccent transition-colors">
-                    Import Chats
+                    {t('settings.data.importChats')}
                   </CardTitle>
                 </div>
-                <CardDescription>Import chats from a JSON file.</CardDescription>
+                <CardDescription>{t('settings.data.importChatsDesc')}</CardDescription>
               </CardHeader>
               <CardFooter>
                 <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="w-full">
@@ -436,10 +438,10 @@ export function DataTab() {
                     <div className="i-ph-trash-duotone w-5 h-5" />
                   </motion.div>
                   <CardTitle className="text-lg group-hover:text-bolt-elements-item-contentAccent transition-colors">
-                    Delete All Chats
+                    {t('settings.data.deleteAllChats')}
                   </CardTitle>
                 </div>
-                <CardDescription>Delete all your chat history.</CardDescription>
+                <CardDescription>{t('settings.data.deleteAllChatsDesc')}</CardDescription>
               </CardHeader>
               <CardFooter>
                 <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="w-full">
@@ -471,7 +473,7 @@ export function DataTab() {
 
       {/* Settings Section */}
       <div>
-        <h2 className="text-xl font-semibold mb-4 text-bolt-elements-textPrimary">Settings</h2>
+        <h2 className="text-xl font-semibold mb-4 text-bolt-elements-textPrimary">{t('settings.data.settings')}</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           <Card>
             <CardHeader>
@@ -629,7 +631,7 @@ export function DataTab() {
 
       {/* API Keys Section */}
       <div>
-        <h2 className="text-xl font-semibold mb-4 text-bolt-elements-textPrimary">API Keys</h2>
+        <h2 className="text-xl font-semibold mb-4 text-bolt-elements-textPrimary">{t('settings.data.apiKeys')}</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           <Card>
             <CardHeader>
@@ -709,7 +711,7 @@ export function DataTab() {
 
       {/* Data Visualization */}
       <div>
-        <h2 className="text-xl font-semibold mb-4 text-bolt-elements-textPrimary">Data Usage</h2>
+        <h2 className="text-xl font-semibold mb-4 text-bolt-elements-textPrimary">{t('settings.data.dataUsage')}</h2>
         <Card>
           <CardContent className="p-5">
             <DataVisualization chats={availableChats} />

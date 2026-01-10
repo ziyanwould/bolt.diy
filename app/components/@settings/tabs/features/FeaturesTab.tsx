@@ -6,6 +6,7 @@ import { useSettings } from '~/lib/hooks/useSettings';
 import { classNames } from '~/utils/classNames';
 import { toast } from 'react-toastify';
 import { PromptLibrary } from '~/lib/common/prompt-library';
+import { useTranslation } from 'react-i18next';
 
 interface FeatureToggle {
   id: string;
@@ -106,6 +107,7 @@ const FeatureSection = memo(
 );
 
 export default function FeaturesTab() {
+  const { t } = useTranslation();
   const {
     autoSelectTemplate,
     isLatestBranch,
@@ -148,25 +150,25 @@ export default function FeaturesTab() {
       switch (id) {
         case 'latestBranch': {
           enableLatestBranch(enabled);
-          toast.success(`Main branch updates ${enabled ? 'enabled' : 'disabled'}`);
+          toast.success(`${t('settings.features.mainBranchUpdates')} ${enabled ? t('settings.features.enabled') : t('settings.features.disabled')}`);
           break;
         }
 
         case 'autoSelectTemplate': {
           setAutoSelectTemplate(enabled);
-          toast.success(`Auto select template ${enabled ? 'enabled' : 'disabled'}`);
+          toast.success(`${t('settings.features.autoSelectTemplate')} ${enabled ? t('settings.features.enabled') : t('settings.features.disabled')}`);
           break;
         }
 
         case 'contextOptimization': {
           enableContextOptimization(enabled);
-          toast.success(`Context optimization ${enabled ? 'enabled' : 'disabled'}`);
+          toast.success(`${t('settings.features.contextOptimization')} ${enabled ? t('settings.features.enabled') : t('settings.features.disabled')}`);
           break;
         }
 
         case 'eventLogs': {
           setEventLogs(enabled);
-          toast.success(`Event logging ${enabled ? 'enabled' : 'disabled'}`);
+          toast.success(`${t('settings.features.eventLogging')} ${enabled ? t('settings.features.enabled') : t('settings.features.disabled')}`);
           break;
         }
 
@@ -181,35 +183,35 @@ export default function FeaturesTab() {
     stable: [
       {
         id: 'latestBranch',
-        title: 'Main Branch Updates',
-        description: 'Get the latest updates from the main branch',
+        title: t('settings.features.mainBranchUpdates'),
+        description: t('settings.features.mainBranchUpdatesDesc'),
         icon: 'i-ph:git-branch',
         enabled: isLatestBranch,
-        tooltip: 'Enabled by default to receive updates from the main development branch',
+        tooltip: t('settings.features.mainBranchUpdatesTooltip'),
       },
       {
         id: 'autoSelectTemplate',
-        title: 'Auto Select Template',
-        description: 'Automatically select starter template',
+        title: t('settings.features.autoSelectTemplate'),
+        description: t('settings.features.autoSelectTemplateDesc'),
         icon: 'i-ph:selection',
         enabled: autoSelectTemplate,
-        tooltip: 'Enabled by default to automatically select the most appropriate starter template',
+        tooltip: t('settings.features.autoSelectTemplateTooltip'),
       },
       {
         id: 'contextOptimization',
-        title: 'Context Optimization',
-        description: 'Optimize context for better responses',
+        title: t('settings.features.contextOptimization'),
+        description: t('settings.features.contextOptimizationDesc'),
         icon: 'i-ph:brain',
         enabled: contextOptimizationEnabled,
-        tooltip: 'Enabled by default for improved AI responses',
+        tooltip: t('settings.features.contextOptimizationTooltip'),
       },
       {
         id: 'eventLogs',
-        title: 'Event Logging',
-        description: 'Enable detailed event logging and history',
+        title: t('settings.features.eventLogging'),
+        description: t('settings.features.eventLoggingDesc'),
         icon: 'i-ph:list-bullets',
         enabled: eventLogs,
-        tooltip: 'Enabled by default to record detailed logs of system events and user actions',
+        tooltip: t('settings.features.eventLoggingTooltip'),
       },
     ],
     beta: [],
@@ -218,19 +220,19 @@ export default function FeaturesTab() {
   return (
     <div className="flex flex-col gap-8">
       <FeatureSection
-        title="Core Features"
+        title={t('settings.features.coreFeatures')}
         features={features.stable}
         icon="i-ph:check-circle"
-        description="Essential features that are enabled by default for optimal performance"
+        description={t('settings.features.coreFeaturesDesc')}
         onToggleFeature={handleToggleFeature}
       />
 
       {features.beta.length > 0 && (
         <FeatureSection
-          title="Beta Features"
+          title={t('settings.features.betaFeatures')}
           features={features.beta}
           icon="i-ph:test-tube"
-          description="New features that are ready for testing but may have some rough edges"
+          description={t('settings.features.betaFeaturesDesc')}
           onToggleFeature={handleToggleFeature}
         />
       )}
@@ -261,17 +263,17 @@ export default function FeaturesTab() {
           </div>
           <div className="flex-1">
             <h4 className="text-sm font-medium text-bolt-elements-textPrimary group-hover:text-purple-500 transition-colors">
-              Prompt Library
+              {t('settings.features.promptLibrary')}
             </h4>
             <p className="text-xs text-bolt-elements-textSecondary mt-0.5">
-              Choose a prompt from the library to use as the system prompt
+              {t('settings.features.promptLibraryDesc')}
             </p>
           </div>
           <select
             value={promptId}
             onChange={(e) => {
               setPromptId(e.target.value);
-              toast.success('Prompt template updated');
+              toast.success(t('settings.features.promptUpdated'));
             }}
             className={classNames(
               'p-2 rounded-lg text-sm min-w-[200px]',
