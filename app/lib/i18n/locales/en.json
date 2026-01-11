@@ -231,16 +231,36 @@
   },
   "header": {
     "settings": "Settings",
-    "toggleSidebar": "Toggle Sidebar"
+    "toggleSidebar": "Toggle Sidebar",
+    "reportBug": "Report Bug",
+    "debugLog": "Debug Log",
+    "downloadDebugLog": "Download Debug Log"
   },
   "workbench": {
     "preview": "Preview",
     "code": "Code",
+    "diff": "Diff",
     "terminal": "Terminal",
     "files": "Files",
+    "search": "Search",
+    "locks": "Locks",
     "download": "Download",
     "deploy": "Deploy",
-    "push": "Push to GitHub"
+    "push": "Push to GitHub",
+    "export": "Export",
+    "sync": "Sync",
+    "syncing": "Syncing...",
+    "syncFiles": "Sync Files",
+    "toggleTerminal": "Toggle Terminal",
+    "fileChanges": "File Changes",
+    "searchFiles": "Search files...",
+    "noMatchingFiles": "No matching files",
+    "noModifiedFiles": "No modified files",
+    "tryAnotherSearch": "Try another search",
+    "changesWillAppear": "Changes will appear here as you edit",
+    "copyFileList": "Copy File List",
+    "save": "Save",
+    "reset": "Reset"
   },
   "avatarMenu": {
     "guestUser": "Guest User",

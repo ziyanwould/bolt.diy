@@ -2,6 +2,7 @@ import { useStore } from '@nanostores/react';
 import { motion, type HTMLMotionProps, type Variants } from 'framer-motion';
 import { computed } from 'nanostores';
 import { memo, useCallback, useEffect, useState, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 import { Popover, Transition } from '@headlessui/react';
 import { diffLines, type Change } from 'diff';
@@ -41,21 +42,6 @@ interface WorkspaceProps {
 }
 
 const viewTransition = { ease: cubicEasingFn };
-
-const sliderOptions: SliderOptions<WorkbenchViewType> = {
-  left: {
-    value: 'code',
-    text: 'Code',
-  },
-  middle: {
-    value: 'diff',
-    text: 'Diff',
-  },
-  right: {
-    value: 'preview',
-    text: 'Preview',
-  },
-};
 
 const workbenchVariants = {
   closed: {
@@ -290,7 +276,27 @@ export const Workbench = memo(
   }: WorkspaceProps) => {
     renderLogger.trace('Workbench');
 
+    const { t } = useTranslation();
     const [fileHistory, setFileHistory] = useState<Record<string, FileHistory>>({});
+
+    // Dynamic slider options with i18n
+    const sliderOptions: SliderOptions<WorkbenchViewType> = useMemo(
+      () => ({
+        left: {
+          value: 'code',
+          text: t('workbench.code'),
+        },
+        middle: {
+          value: 'diff',
+          text: t('workbench.diff'),
+        },
+        right: {
+          value: 'preview',
+          text: t('workbench.preview'),
+        },
+      }),
+      [t],
+    );
 
     // const modifiedFiles = Array.from(useStore(workbenchStore.unsavedFiles).keys());
 
@@ -417,7 +423,7 @@ export const Workbench = memo(
                             disabled={isSyncing || streaming}
                             className="rounded-md items-center justify-center [&:is(:disabled,.disabled)]:cursor-not-allowed [&:is(:disabled,.disabled)]:opacity-60 px-3 py-1.5 text-xs bg-accent-500 text-white hover:text-bolt-elements-item-contentAccent [&:not(:disabled,.disabled)]:hover:bg-bolt-elements-button-primary-backgroundHover outline-accent-500 flex gap-1.7"
                           >
-                            {isSyncing ? 'Syncing...' : 'Sync'}
+                            {isSyncing ? t('workbench.syncing') : t('workbench.sync')}
                             <span className={classNames('i-ph:caret-down transition-transform')} />
                           </DropdownMenu.Trigger>
                           <DropdownMenu.Content
@@ -445,7 +451,7 @@ export const Workbench = memo(
                                 ) : (
                                   <div className="i-ph:cloud-arrow-down" />
                                 )}
-                                <span>{isSyncing ? 'Syncing...' : 'Sync Files'}</span>
+                                <span>{isSyncing ? t('workbench.syncing') : t('workbench.syncFiles')}</span>
                               </div>
                             </DropdownMenu.Item>
                           </DropdownMenu.Content>
@@ -461,7 +467,7 @@ export const Workbench = memo(
                           className="rounded-md items-center justify-center [&:is(:disabled,.disabled)]:cursor-not-allowed [&:is(:disabled,.disabled)]:opacity-60 px-3 py-1.5 text-xs bg-accent-500 text-white hover:text-bolt-elements-item-contentAccent [&:not(:disabled,.disabled)]:hover:bg-bolt-elements-button-primary-backgroundHover outline-accent-500 flex gap-1.7"
                         >
                           <div className="i-ph:terminal" />
-                          Toggle Terminal
+                          {t('workbench.toggleTerminal')}
                         </button>
                       </div>
                     </div>

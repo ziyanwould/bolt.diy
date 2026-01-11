@@ -231,16 +231,36 @@
   },
   "header": {
     "settings": "设置",
-    "toggleSidebar": "切换侧边栏"
+    "toggleSidebar": "切换侧边栏",
+    "reportBug": "报告 Bug",
+    "debugLog": "调试日志",
+    "downloadDebugLog": "下载调试日志"
   },
   "workbench": {
     "preview": "预览",
     "code": "代码",
+    "diff": "差异",
     "terminal": "终端",
     "files": "文件",
+    "search": "搜索",
+    "locks": "锁定",
     "download": "下载",
     "deploy": "部署",
-    "push": "推送到 GitHub"
+    "push": "推送到 GitHub",
+    "export": "导出",
+    "sync": "同步",
+    "syncing": "同步中...",
+    "syncFiles": "同步文件",
+    "toggleTerminal": "切换终端",
+    "fileChanges": "文件更改",
+    "searchFiles": "搜索文件...",
+    "noMatchingFiles": "没有匹配的文件",
+    "noModifiedFiles": "没有修改的文件",
+    "tryAnotherSearch": "尝试其他搜索",
+    "changesWillAppear": "编辑后更改将显示在这里",
+    "copyFileList": "复制文件列表",
+    "save": "保存",
+    "reset": "重置"
   },
   "avatarMenu": {
     "guestUser": "访客用户",
