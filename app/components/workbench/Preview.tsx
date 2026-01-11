@@ -7,6 +7,7 @@ import { ScreenshotSelector } from './ScreenshotSelector';
 import { expoUrlAtom } from '~/lib/stores/qrCodeStore';
 import { ExpoQrModal } from '~/components/workbench/ExpoQrModal';
 import type { ElementInfo } from './Inspector';
+import { useTranslation } from 'react-i18next';
 
 type ResizeSide = 'left' | 'right' | null;
 
@@ -53,6 +54,7 @@ const WINDOW_SIZES: WindowSize[] = [
 ];
 
 export const Preview = memo(({ setSelectedElement }: PreviewProps) => {
+  const { t } = useTranslation();
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -199,7 +201,7 @@ export const Preview = memo(({ setSelectedElement }: PreviewProps) => {
         onMouseOut={(e) =>
           (e.currentTarget.style.background = 'var(--bolt-elements-background-depth-3, rgba(0,0,0,.15))')
         }
-        title="Drag to resize width"
+        title={t('workbenchToolbar.dragToResize')}
       >
         <GripIcon />
       </div>
@@ -685,7 +687,7 @@ export const Preview = memo(({ setSelectedElement }: PreviewProps) => {
             previews={previews}
           />
           <input
-            title="URL Path"
+            title={t('workbenchToolbar.urlPath')}
             ref={inputRef}
             className="w-full bg-transparent outline-none"
             type="text"
@@ -718,10 +720,10 @@ export const Preview = memo(({ setSelectedElement }: PreviewProps) => {
           <IconButton
             icon="i-ph:devices"
             onClick={toggleDeviceMode}
-            title={isDeviceModeOn ? 'Switch to Responsive Mode' : 'Switch to Device Mode'}
+            title={isDeviceModeOn ? t('workbenchToolbar.switchToResponsive') : t('workbenchToolbar.switchToDevice')}
           />
 
-          {expoUrl && <IconButton icon="i-ph:qr-code" onClick={() => setIsExpoQrModalOpen(true)} title="Show QR" />}
+          {expoUrl && <IconButton icon="i-ph:qr-code" onClick={() => setIsExpoQrModalOpen(true)} title={t('workbenchToolbar.showQR')} />}
 
           <ExpoQrModal open={isExpoQrModalOpen} onClose={() => setIsExpoQrModalOpen(false)} />
 
@@ -730,12 +732,12 @@ export const Preview = memo(({ setSelectedElement }: PreviewProps) => {
               <IconButton
                 icon="i-ph:device-rotate"
                 onClick={() => setIsLandscape(!isLandscape)}
-                title={isLandscape ? 'Switch to Portrait' : 'Switch to Landscape'}
+                title={isLandscape ? t('workbenchToolbar.switchToPortrait') : t('workbenchToolbar.switchToLandscape')}
               />
               <IconButton
                 icon={showDeviceFrameInPreview ? 'i-ph:device-mobile' : 'i-ph:device-mobile-slash'}
                 onClick={() => setShowDeviceFrameInPreview(!showDeviceFrameInPreview)}
-                title={showDeviceFrameInPreview ? 'Hide Device Frame' : 'Show Device Frame'}
+                title={showDeviceFrameInPreview ? t('workbenchToolbar.hideDeviceFrame') : t('workbenchToolbar.showDeviceFrame')}
               />
             </>
           )}
@@ -745,19 +747,19 @@ export const Preview = memo(({ setSelectedElement }: PreviewProps) => {
             className={
               isInspectorMode ? 'bg-bolt-elements-background-depth-3 !text-bolt-elements-item-contentAccent' : ''
             }
-            title={isInspectorMode ? 'Disable Element Inspector' : 'Enable Element Inspector'}
+            title={isInspectorMode ? t('workbenchToolbar.disableInspector') : t('workbenchToolbar.enableInspector')}
           />
           <IconButton
             icon={isFullscreen ? 'i-ph:arrows-in' : 'i-ph:arrows-out'}
             onClick={toggleFullscreen}
-            title={isFullscreen ? 'Exit Full Screen' : 'Full Screen'}
+            title={isFullscreen ? t('workbenchToolbar.exitFullScreen') : t('workbenchToolbar.fullScreen')}
           />
 
           <div className="flex items-center relative">
             <IconButton
               icon="i-ph:list"
               onClick={() => setIsWindowSizeDropdownOpen(!isWindowSizeDropdownOpen)}
-              title="New Window Options"
+              title={t('workbenchToolbar.newWindowOptions')}
             />
 
             {isWindowSizeDropdownOpen && (
@@ -766,7 +768,7 @@ export const Preview = memo(({ setSelectedElement }: PreviewProps) => {
                 <div className="absolute right-0 top-full mt-2 z-50 min-w-[240px] max-h-[400px] overflow-y-auto bg-white dark:bg-black rounded-xl shadow-2xl border border-[#E5E7EB] dark:border-[rgba(255,255,255,0.1)] overflow-hidden">
                   <div className="p-3 border-b border-[#E5E7EB] dark:border-[rgba(255,255,255,0.1)]">
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-sm font-medium text-[#111827] dark:text-gray-300">Window Options</span>
+                      <span className="text-sm font-medium text-[#111827] dark:text-gray-300">{t('workbenchToolbar.windowOptions')}</span>
                     </div>
                     <div className="flex flex-col gap-2">
                       <button
@@ -775,7 +777,7 @@ export const Preview = memo(({ setSelectedElement }: PreviewProps) => {
                           openInNewTab();
                         }}
                       >
-                        <span>Open in new tab</span>
+                        <span>{t('workbenchToolbar.openInNewTab')}</span>
                         <div className="i-ph:arrow-square-out h-5 w-4" />
                       </button>
                       <button
@@ -806,11 +808,11 @@ export const Preview = memo(({ setSelectedElement }: PreviewProps) => {
                           );
                         }}
                       >
-                        <span>Open in new window</span>
+                        <span>{t('workbenchToolbar.openInNewWindow')}</span>
                         <div className="i-ph:browser h-5 w-4" />
                       </button>
                       <div className="flex items-center justify-between">
-                        <span className="text-xs text-bolt-elements-textTertiary">Show Device Frame</span>
+                        <span className="text-xs text-bolt-elements-textTertiary">{t('workbenchToolbar.showDeviceFrame')}</span>
                         <button
                           className={`w-10 h-5 rounded-full transition-colors duration-200 ${
                             showDeviceFrame ? 'bg-[#6D28D9]' : 'bg-gray-300 dark:bg-gray-700'
@@ -828,7 +830,7 @@ export const Preview = memo(({ setSelectedElement }: PreviewProps) => {
                         </button>
                       </div>
                       <div className="flex items-center justify-between">
-                        <span className="text-xs text-bolt-elements-textTertiary">Landscape Mode</span>
+                        <span className="text-xs text-bolt-elements-textTertiary">{t('workbenchToolbar.landscapeMode')}</span>
                         <button
                           className={`w-10 h-5 rounded-full transition-colors duration-200 ${
                             isLandscape ? 'bg-[#6D28D9]' : 'bg-gray-300 dark:bg-gray-700'

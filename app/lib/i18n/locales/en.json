@@ -333,7 +333,11 @@
     "exitFullScreen": "Exit Full Screen",
     "fullScreen": "Full Screen",
     "newWindowOptions": "New Window Options",
-    "dragToResize": "Drag to resize width"
+    "dragToResize": "Drag to resize width",
+    "windowOptions": "Window Options",
+    "openInNewTab": "Open in new tab",
+    "openInNewWindow": "Open in new window",
+    "landscapeMode": "Landscape Mode"
   },
   "terminal": {
     "resetTerminal": "Reset Terminal",
