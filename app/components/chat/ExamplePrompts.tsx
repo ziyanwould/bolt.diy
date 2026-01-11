@@ -1,7 +1,11 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-export function ExamplePrompts(sendMessage?: { (event: React.UIEvent, messageInput?: string): void | undefined }) {
+interface ExamplePromptsProps {
+  sendMessage?: (event: React.UIEvent, messageInput?: string) => void;
+}
+
+export function ExamplePrompts({ sendMessage }: ExamplePromptsProps) {
   const { t } = useTranslation();
 
   const EXAMPLE_PROMPTS = [
