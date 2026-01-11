@@ -3,6 +3,7 @@ import { workbenchStore } from '~/lib/stores/workbench';
 import { classNames } from '~/utils/classNames';
 import { Checkbox } from '~/components/ui/Checkbox';
 import { toast } from '~/components/ui/use-toast';
+import { useTranslation } from 'react-i18next';
 
 interface LockedItem {
   path: string;
@@ -10,6 +11,7 @@ interface LockedItem {
 }
 
 export function LockManager() {
+  const { t } = useTranslation();
   const [lockedItems, setLockedItems] = useState<LockedItem[]>([]);
   const [selectedItems, setSelectedItems] = useState<Set<string>>(new Set());
   const [filter, setFilter] = useState<'all' | 'files' | 'folders'>('all');
@@ -105,7 +107,7 @@ export function LockManager() {
   // Handle unlocking selected items
   const handleUnlockSelected = () => {
     if (selectedItems.size === 0) {
-      toast.error('No items selected to unlock.');
+      toast.error(t('fileTree.noItemsSelected'));
       return;
     }
 
@@ -183,9 +185,9 @@ export function LockManager() {
           <button
             className="ml-auto px-2 py-0.5 rounded bg-bolt-elements-button-secondary-background hover:bg-bolt-elements-button-secondary-backgroundHover text-bolt-elements-button-secondary-text text-xs flex items-center gap-1"
             onClick={handleUnlockSelected}
-            title="Unlock all selected items"
+            title={t('fileTree.unlockAll')}
           >
-            Unlock all
+            {t('fileTree.unlockAll')}
           </button>
         )}
         <div></div>
@@ -196,7 +198,7 @@ export function LockManager() {
         {filteredAndSortedItems.length === 0 ? (
           <div className="flex flex-col items-center justify-center h-full text-bolt-elements-textTertiary text-xs gap-2">
             <span className="i-ph:lock-open-duotone text-lg opacity-50" />
-            <span>No locked items found</span>
+            <span>{t('fileTree.noLockedItems')}</span>
           </div>
         ) : (
           <ul className="space-y-1">
@@ -241,7 +243,7 @@ export function LockManager() {
 
                     toast.success(`${item.path.replace('/home/project/', '')} unlocked`);
                   }}
-                  title="Unlock"
+                  title={t('fileTree.unlock')}
                 >
                   <span className="i-ph:lock-open text-xs" />
                 </button>

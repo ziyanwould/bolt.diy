@@ -342,9 +342,10 @@
   "fileTree": {
     "folderLocked": "文件夹已锁定",
     "fileLocked": "文件已锁定",
-    "unlockAll": "解锁所有选中项",
+    "unlockAll": "全部解锁",
     "unlock": "解锁",
-    "noItemsSelected": "未选择要解锁的项目"
+    "noItemsSelected": "未选择要解锁的项目",
+    "noLockedItems": "未找到锁定项目"
   },
   "toast": {
     "success": "成功",
