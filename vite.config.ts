@@ -72,6 +72,9 @@ export default defineConfig((config) => {
         },
       },
     },
+    server: {
+      allowedHosts: true, // 允许任意域名访问
+    },
     test: {
       exclude: [
         '**/node_modules/**',
